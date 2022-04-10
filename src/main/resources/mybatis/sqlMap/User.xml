@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--设置名字空间-->
+<mapper namespace="zhanghui">
+
+    <!--设置返回结果集,将数据库字段和java对象字段建立联系,type是java对象路径,id是结果集的唯一标识-->
+    <resultMap type="UserDO" id="USER">
+        <!--数据库是主键用id标签,非主键用result标签,column是数据库的字段名,property是java对象的字段名-->
+        <id column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="user_status" jdbcType="VARCHAR" property="userStatus"/>
+        <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified"/>
+        <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
+        <result column="modifier" jdbcType="VARCHAR" property="modifier"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber"/>
+        <result column="sex" jdbcType="INTEGER" property="sex"/>
+        <result column="age" jdbcType="INTEGER" property="age"/>
+        <result column="profession" jdbcType="VARCHAR" property="profession"/>
+    </resultMap>
+
+    <select id="queryByUserNameAndPassword" resultMap="USER">
+        SELECT * FROM user where username=#{username} and password=#{password} and user_status!='DELETED'
+    </select>
+
+    <select id="queryByUserId" resultMap="USER">
+        SELECT * FROM user where user_status!='DELETED' and user_id=#{userId}
+    </select>
+
+    <select id="listAllUsers" resultMap="USER">
+        SELECT  * FROM user where user_status!='DELETED'
+    </select>
+
+    <insert id="insertUser"  parameterType="book.domain.dataobject.UserDO" useGeneratedKeys="true" keyProperty="userId">
+        INSERT INTO user(username,password,user_status,gmt_modified,gmt_create,modifier,email,phone_number,sex,age,profession) VALUES (#{username},#{password},#{userStatus},CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP ,#{modifier},#{email},#{phoneNumber},#{sex},#{age},#{profession})
+    </insert>
+
+    <update id="updateUser" parameterType="book.domain.dataobject.UserDO" useGeneratedKeys="true" keyProperty="userId">
+        UPDATE user set username=#{username},password=#{password},user_status=#{userStatus},gmt_modified=#{gmtModified},gmt_create=#{gmtCreate},modifier=#{modifier},email=#{email},phone_number=#{phoneNumber},sex=#{sex},age=#{age},profession=#{profession} WHERE user_id=#{userId}
+    </update>
+
+    <delete id="deleteUser" parameterType="long">
+        UPDATE user SET user_status='DELETED' WHERE user_id=#{userId}
+    </delete>
+
+    <select id="queryByName" resultMap="USER">
+        SELECT * FROM user WHERE user_status!='DELETED'AND username=#{username}
+    </select>
+</mapper>
