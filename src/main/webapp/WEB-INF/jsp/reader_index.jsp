@@ -58,8 +58,8 @@
                 </c:forEach>
             </ul>
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="#">使用knn推荐书籍</a></li>
-                <c:forEach var="recommendDTO" items="${kmeans}">
+                <li class="active"><a href="#">使用Mahout协同过滤推荐书籍</a></li>
+                <c:forEach var="recommendDTO" items="${mahout}">
                     <li><a href="/book/${recommendDTO.bookName}/${recommendDTO.author}">${recommendDTO.bookName}</a>
                     </li>
                 </c:forEach>

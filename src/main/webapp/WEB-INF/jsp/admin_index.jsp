@@ -298,7 +298,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">出版日期</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" name="pubdate" placeholder="出版日期" type="text">
+                                    <input class="form-control" name="pubdate" placeholder="出版日期" type="date" value="yyyy-MM-dd HH:mm:ss">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -308,9 +308,9 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">图片</label>
+                                <label class="col-sm-2 control-label">图书封面</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" name="multipartFile" placeholder="书籍图片" type="file">
+                                    <input class="form-control" name="photoUrl" placeholder="书籍图片" type="text">
                                 </div>
                             </div>
                         </div>

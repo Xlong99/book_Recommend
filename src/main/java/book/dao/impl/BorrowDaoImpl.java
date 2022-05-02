@@ -8,9 +8,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
+ * 妈的，屎山
  * @author hui zhang
  * @date 2018/3/21
  */
@@ -54,5 +57,13 @@ public class BorrowDaoImpl extends CommonDao implements BorrowDao {
     public long updateStatus(BorrowDO borrowDO) {
         LoggerUtil.info(LOGGER,"enter in BorrowDaoImpl[updateStatus],borrowDO:{0}",borrowDO);
         return getSqlSession().update("zhanghui.updateByBorrowId",borrowDO);
+    }
+
+    @Override
+    public BorrowDO queryByUnionIdAndUserId(Long unionId,Long userId) {
+        Map<String,Object> para = new HashMap<>();
+        para.put("unionId",unionId);
+        para.put("userId",userId);
+        return getSqlSession().selectOne("zhanghui.queryByUnionIdAndUserId",para);
     }
 }

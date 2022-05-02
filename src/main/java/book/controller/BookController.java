@@ -50,11 +50,11 @@ public class BookController {
             List<BookDTO> bookDTOList = bookInfoService.listAllBooks();
             //获取推荐列表
             List<RecommendDTO> recommendDTOList=recommendService.listByUserId(userDTO.getUserId(),0);
-            List<RecommendDTO>recommendDTOListKmeans=recommendService.listByUserId(userDTO.getUserId(),1);
+            List<RecommendDTO> recommendDTOListMahout =recommendService.listByUserId(userDTO.getUserId(),1);
             model.addAttribute("userDTO", userDTO);
             model.addAttribute("bookList", bookDTOList);
             model.addAttribute("recommendDTOList",recommendDTOList);
-            model.addAttribute("kmeans",recommendDTOListKmeans);
+            model.addAttribute("mahout",recommendDTOListMahout);
             result.setSuccess(true);
             return "reader_index";
         }catch (BusinessException be){
@@ -113,11 +113,11 @@ public class BookController {
             }
             List<BookDTO> bookDTOList = bookInfoService.listBooksByNameAndAuthor(bookName, author);
             List<RecommendDTO> recommendDTOList = recommendService.listByUserId(userDTO.getUserId(),0);
-            List<RecommendDTO>recommendDTOListKmeas=recommendService.listByUserId(userDTO.getUserId(),1);
+            List<RecommendDTO> recommendDTOListMahout =recommendService.listByUserId(userDTO.getUserId(),1);
             model.addAttribute("recommendDTOList",recommendDTOList);
             model.addAttribute("userDTO", userDTO);
             model.addAttribute("bookList", bookDTOList);
-            model.addAttribute("kmeans",recommendDTOListKmeas);
+            model.addAttribute("mahout",recommendDTOListMahout);
             result.setSuccess(true);
             return "reader_detail";
         }catch (BusinessException be){

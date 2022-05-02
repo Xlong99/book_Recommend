@@ -53,7 +53,7 @@ public class DateUtils {
             if (simpleDateFormat == null) {
                 synchronized (lock) {
                     if (simpleDateFormat == null) {
-                        simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
                         local.set(simpleDateFormat);
                         return simpleDateFormat.parse(str);
                     }

@@ -41,4 +41,9 @@
         SELECT * FROM  borrow
     </select>
 
+    <select id="queryByUnionIdAndUserId" resultMap="BORROW">
+        SELECT * FROM `borrow` where book_id IN
+                                     (SELECT book_id from book join union_book on book.author = union_book.author and book.book_name = union_book.book_name WHERE union_book_id = #{unionId} )
+                                 and user_id = #{userId} limit 1
+    </select>
 </mapper>

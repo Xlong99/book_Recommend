@@ -17,4 +17,5 @@ public class CommonDao extends SqlSessionDaoSupport {
     public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
         super.setSqlSessionFactory(sqlSessionFactory);
     }
+
 }

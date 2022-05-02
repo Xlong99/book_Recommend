@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="book.dao.UnionBookDao">
+  <resultMap id="BaseResultMap" type="book.domain.dataobject.UnionBookDO">
+    <!--@mbg.generated-->
+    <!--@Table union_book-->
+    <id column="union_book_id" jdbcType="BIGINT" property="unionBookId" />
+    <result column="book_name" jdbcType="VARCHAR" property="bookName" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    union_book_id, book_name, author
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from union_book
+    where union_book_id = #{unionBookId,jdbcType=BIGINT}
+  </select>
+  <select id="selectOneByBookNameAndAuthor" resultType="book.domain.dataobject.UnionBookDO" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from union_book
+    where book_name = #{bookName} and author = #{author} limit 1
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from union_book
+    where union_book_id = #{unionBookId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="book.domain.dataobject.UnionBookDO">
+    <!--@mbg.generated-->
+    insert into union_book (union_book_id, book_name, author
+      )
+    values (#{unionBookId,jdbcType=INTEGER}, #{bookName,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="book.domain.dataobject.UnionBookDO">
+    <!--@mbg.generated-->
+    insert into union_book
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="unionBookId != null">
+        union_book_id,
+      </if>
+      <if test="bookName != null">
+        book_name,
+      </if>
+      <if test="author != null">
+        author,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="unionBookId != null">
+        #{unionBookId,jdbcType=INTEGER},
+      </if>
+      <if test="bookName != null">
+        #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null">
+        #{author,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="book.domain.dataobject.UnionBookDO">
+    <!--@mbg.generated-->
+    update union_book
+    <set>
+      <if test="bookName != null">
+        book_name = #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null">
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where union_book_id = #{unionBookId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="book.domain.dataobject.UnionBookDO">
+    <!--@mbg.generated-->
+    update union_book
+    set book_name = #{bookName,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR}
+    where union_book_id = #{unionBookId,jdbcType=INTEGER}
+  </update>
+</mapper>

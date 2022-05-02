@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="book.dao.TastePrefDao">
+  <resultMap id="BaseResultMap" type="book.domain.dataobject.TastePrefDO">
+    <!--@mbg.generated-->
+    <!--@Table taste_pref-->
+    <id column="user_id" jdbcType="BIGINT" property="userId" />
+    <id column="item_id" jdbcType="BIGINT" property="itemId" />
+    <result column="pref_value" jdbcType="FLOAT" property="prefValue" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    user_id, item_id, pref_value
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from taste_pref
+    where user_id = #{userId,jdbcType=BIGINT}
+      and item_id = #{itemId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    <!--@mbg.generated-->
+    delete from taste_pref
+    where user_id = #{userId,jdbcType=BIGINT}
+      and item_id = #{itemId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="book.domain.dataobject.TastePrefDO">
+    <!--@mbg.generated-->
+    insert into taste_pref (user_id, item_id, pref_value
+      )
+    values (#{userId,jdbcType=BIGINT}, #{itemId,jdbcType=BIGINT}, #{prefValue,jdbcType=FLOAT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="book.domain.dataobject.TastePrefDO">
+    <!--@mbg.generated-->
+    insert into taste_pref
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="prefValue != null">
+        pref_value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="itemId != null">
+        #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="prefValue != null">
+        #{prefValue,jdbcType=FLOAT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="book.domain.dataobject.TastePrefDO">
+    <!--@mbg.generated-->
+    update taste_pref
+    <set>
+      <if test="prefValue != null">
+        pref_value = #{prefValue,jdbcType=FLOAT},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=BIGINT}
+      and item_id = #{itemId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="book.domain.dataobject.TastePrefDO">
+    <!--@mbg.generated-->
+    update taste_pref
+    set pref_value = #{prefValue,jdbcType=FLOAT}
+    where user_id = #{userId,jdbcType=BIGINT}
+      and item_id = #{itemId,jdbcType=BIGINT}
+  </update>
+
+  <insert id="insertList" parameterType="java.util.List">
+    insert into taste_pref values
+    <foreach collection="list" item="item" index= "index" separator =",">
+      (
+      #{item.userId},
+      #{item.itemId},
+      #{item.prefValue}
+      )
+    </foreach>
+  </insert>
+
+  <delete id="deleteAllRows">
+    delete from taste_pref
+  </delete>
+</mapper>

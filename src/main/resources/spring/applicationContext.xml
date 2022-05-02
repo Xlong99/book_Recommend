@@ -39,6 +39,10 @@
         <!-- 自动扫描mapping.xml映射文件-->
          <property name="mapperLocations" value="classpath:mybatis/sqlMap/*.xml"/>
     </bean>
+<!--    <bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
+<!--        <property name="basePackage" value="book.dao"/>-->
+<!--    </bean>-->
+
     <!--配置事务管理器-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
@@ -56,11 +60,6 @@
         <property name="queueCapacity" value="50"/>
     </bean>
 
-<!--    <bean id="ossClient" class="book.task.OSS">-->
-<!--        <constructor-arg name="endPoint" value="oss-cn-beijing.aliyuncs.com"></constructor-arg>-->
-<!--        <constructor-arg name="accessKeyId" value="LTAIXNMJPUiZ1XQ8"></constructor-arg>-->
-<!--        <constructor-arg name="accessKeySecret" value="HZcnz70aCM6M6tdzn5KhwS04Ht5pkL"></constructor-arg>-->
-<!--        <constructor-arg name="bucketName" value="book-recommendation-photo"></constructor-arg>-->
-<!--    </bean>-->
+
 
 </beans>

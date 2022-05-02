@@ -1,6 +1,7 @@
 package book.dao;
 
 import book.domain.dataobject.BorrowDO;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -21,4 +22,6 @@ public interface BorrowDao {
     List<BorrowDO> listAllBorrows();
 
     long updateStatus(BorrowDO borrowDO);
+
+    BorrowDO queryByUnionIdAndUserId(@Param("unionId")Long unionId, @Param("userId") Long userId);
 }

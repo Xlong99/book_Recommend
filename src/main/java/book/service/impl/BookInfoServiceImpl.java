@@ -1,8 +1,10 @@
 package book.service.impl;
 
 import book.dao.BookDao;
+import book.dao.UnionBookDao;
 import book.domain.Enum.StatusEnum;
 import book.domain.dataobject.BookDO;
+import book.domain.dataobject.UnionBookDO;
 import book.domain.dto.BookDTO;
 import book.domain.result.PageResult;
 import book.service.BookInfoService;
@@ -38,6 +40,8 @@ public class BookInfoServiceImpl implements BookInfoService {
 
     @Resource(name = "bookDao")
     private BookDao bookDao;
+    @Resource(name = "unionBookDao")
+    UnionBookDao unionBookDao;
 
    // @Resource(name = "ossClient")
     //private OSS oss;
@@ -121,6 +125,9 @@ public class BookInfoServiceImpl implements BookInfoService {
     @Override
     public boolean insertBook(BookDTO bookDTO) {
         long id=bookDao.insertBook(convertDTOTODO(bookDTO));
+        if(unionBookDao.selectOneByBookNameAndAuthor(bookDTO.getBookName(),bookDTO.getAuthor())==null){
+            unionBookDao.insert(new UnionBookDO(bookDTO.getBookName(),bookDTO.getAuthor()));
+        }
         return id>0;
     }
 

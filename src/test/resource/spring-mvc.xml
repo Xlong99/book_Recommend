@@ -30,11 +30,21 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <task:annotation-driven/>
+    <!--系统启动先执行一次,之后每间隔60秒执行一次-->
+    <bean id="myRecommendaction" class="book.task.MyRecommendation" ></bean>
+<!--    <bean id="KMeansRecommendation" class="book.task.KMeansRecommendation" ></bean>-->
+    <task:scheduled-tasks>
+
+        <task:scheduled ref="myRecommendaction" method="recommend" cron="0/240 * * * * ?" />
+<!--        <task:scheduled ref="KMeansRecommendation" method="KmeansRecommend" cron="*/60 * * * * ?" />-->
+
+    </task:scheduled-tasks>
+
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="maxUploadSize">
             <value>5242880</value>
         </property>
         <property name="defaultEncoding" value="UTF-8"/>
     </bean>
-
 </beans>

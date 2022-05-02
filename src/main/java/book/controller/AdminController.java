@@ -12,7 +12,7 @@ import book.service.UserService;
 
 import book.util.ExceptionHandler;
 import book.util.LoggerUtil;
-import com.aliyun.oss.OSS;
+
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.google.common.collect.Lists;
@@ -115,7 +115,7 @@ public class AdminController {
      * @return
      */
     @RequestMapping(value = "/admin/insert")
-    public String insertBook(HttpSession httpSession,Model model,BookDTO bookDTO ,MultipartFile multipartFile) {
+    public String insertBook(HttpSession httpSession,Model model,BookDTO bookDTO ) {
         BaseResult result = new BaseResult();
         try {
             LoggerUtil.info(LOGGER, "enter in AdminController[insertBook]");
@@ -123,8 +123,6 @@ public class AdminController {
             if (userDTO == null) {
                 return "redirect:/login";
             }
-           // oss.upload(multipartFile.getOriginalFilename(),multipartFile.getInputStream());
-            bookDTO.setPhotoUrl(null);
             bookInfoService.insertBook(bookDTO);
             result.setSuccess(true);
             return "redirect:/admin/index";
