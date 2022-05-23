@@ -39,7 +39,9 @@
     </insert>
 
     <update id="updateUser" parameterType="book.domain.dataobject.UserDO" useGeneratedKeys="true" keyProperty="userId">
-        UPDATE user set username=#{username},password=#{password},user_status=#{userStatus},gmt_modified=#{gmtModified},gmt_create=#{gmtCreate},modifier=#{modifier},email=#{email},phone_number=#{phoneNumber},sex=#{sex},age=#{age},profession=#{profession} WHERE user_id=#{userId}
+        UPDATE user set
+        username=#{username},password=#{password},email=#{email},phone_number=#{phoneNumber}
+        WHERE user_id=#{userId}
     </update>
 
     <delete id="deleteUser" parameterType="long">

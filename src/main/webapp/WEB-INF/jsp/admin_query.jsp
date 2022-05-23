@@ -160,7 +160,7 @@
                 </td>
                 <td class="col-md-1"><%= bookDTO.getAuthor()%>
                 </td>
-                <td class="col-md-1"><img src="<% if (bookDTO.getPhotoUrl()!=null) out.println(bookDTO.getPhotoUrl()); else out.println("https://video-spring.oss-cn-beijing.aliyuncs.com/timg%20%281%29.gif");%>"></td>
+                <td class="col-md-1"><img src="<% if (bookDTO.getPhotoUrl()!=null) out.print(bookDTO.getPhotoUrl()); else out.print("https://video-spring.oss-cn-beijing.aliyuncs.com/timg%20%281%29.gif");%>" style="max-width: 135px;max-height: 200px;"></td>
                 <!--TODO 后台控制字数-->
                 <td class="col-md-3"><% if  (bookDTO.getIntroduction()!=null) out.println(bookDTO.getIntroduction()); %>
                 </td>

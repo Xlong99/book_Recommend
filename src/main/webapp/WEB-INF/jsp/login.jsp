@@ -10,7 +10,7 @@
 <head>
     
     <title>用户登录</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="<%= request.getContextPath()%>/static/book-js/show.js"></script>
     <link href="<%=request.getContextPath() %>/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">

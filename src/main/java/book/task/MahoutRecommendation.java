@@ -10,6 +10,7 @@ import org.apache.mahout.cf.taste.impl.recommender.GenericUserBasedRecommender;
 import org.apache.mahout.cf.taste.impl.similarity.UncenteredCosineSimilarity;
 import org.apache.mahout.cf.taste.model.DataModel;
 import org.apache.mahout.cf.taste.neighborhood.UserNeighborhood;
+import org.apache.mahout.cf.taste.recommender.ItemBasedRecommender;
 import org.apache.mahout.cf.taste.recommender.RecommendedItem;
 import org.apache.mahout.cf.taste.similarity.UserSimilarity;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -64,7 +65,6 @@ public class MahoutRecommendation {
         UserSimilarity similarity = new UncenteredCosineSimilarity(dataModel);
         UserNeighborhood neighborhood = new NearestNUserNeighborhood(10, similarity, dataModel);
         GenericUserBasedRecommender recommender = new GenericUserBasedRecommender(dataModel, neighborhood, similarity);
-
         recommendDao.deleteBefore(1);
         //为每个用户进行推荐
         List<UserDO> userDOList = userDao.listAllUsers();

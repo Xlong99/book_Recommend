@@ -135,7 +135,7 @@
             <tr>
                 <td class="col-md-1"><%= username %>
                 </td>
-                <td class="col-md-1"><img src="<% if (borrowDTO.getBookDTO().getPhotoUrl()!=null) out.println(borrowDTO.getBookDTO().getPhotoUrl()); else out.println("https://video-spring.oss-cn-beijing.aliyuncs.com/timg%20%281%29.gif");%>"></td>
+                <td class="col-md-1"><img src="<% if (borrowDTO.getBookDTO().getPhotoUrl()!=null) out.print(borrowDTO.getBookDTO().getPhotoUrl()); else out.print("https://video-spring.oss-cn-beijing.aliyuncs.com/timg%20%281%29.gif");%>" style="max-width: 135px;max-height: 200px;"></td>
                 <td class="col-md-1"><%= borrowDTO.getBookDTO().getBookName()%></td>
                 <!--TODO 后台控制字数-->
                 <td class="col-md-1"><%= borrowDTO.getBookDTO().getAuthor()%>
@@ -155,7 +155,7 @@
             <tr>
                 <td class="col-md-1"><%= username %>
                 </td>
-                <td class="col-md-1"><img src="<% if (borrowDTO.getBookDTO().getPhotoUrl()!=null) out.println(borrowDTO.getBookDTO().getPhotoUrl()); else out.println("https://video-spring.oss-cn-beijing.aliyuncs.com/timg%20%281%29.gif");%>"></td>
+                <td class="col-md-1"><img src="<% if (borrowDTO.getBookDTO().getPhotoUrl()!=null) out.print(borrowDTO.getBookDTO().getPhotoUrl()); else out.print("https://video-spring.oss-cn-beijing.aliyuncs.com/timg%20%281%29.gif");%>" style="max-width: 135px;max-height: 200px;"></td>
                 <td class="col-md-1"><%= borrowDTO.getBookDTO().getBookName() %></td>
                 <!--TODO 后台控制字数-->
                 <td class="col-md-1"><%= borrowDTO.getBookDTO().getAuthor()  %>
@@ -173,6 +173,9 @@
                 }
             %>
             </tbody>
+            </table>
+    </div>
+</div>
 
-            </body>
+</body>
 </html>

@@ -107,7 +107,7 @@ public class BorrowServiceImpl implements BorrowService {
         //2,查询该用户的借阅记录
         //3,补充图书信息
         UserDO userDO = userDao.queryByUserId(userId);
-        ValidateUtils.checkNotNull(userDO, "借阅人不存在,请登出账号重试");
+       // ValidateUtils.checkNotNull(userDO, "借阅人不存在,请登出账号重试");
         List<BorrowDO> borrowDOList = borrowDao.listByUserId(userId);
         List<BorrowDTO> borrowDTOList = Lists.newArrayList();
         //补充图书信息
